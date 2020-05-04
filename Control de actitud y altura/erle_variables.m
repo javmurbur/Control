@@ -224,3 +224,6 @@ erle.U4_plot =   [0:erle.Tm:erle.T_simulacion];
 erle.yaw_des_plot = [0:erle.Tm:erle.T_simulacion];
 erle.ryaw_plot = [0:erle.Tm:erle.T_simulacion];
 
+erle.X_plot = [0:erle.Tm:erle.T_simulacion];
+erle.Y_plot = [0:erle.Tm:erle.T_simulacion];
+

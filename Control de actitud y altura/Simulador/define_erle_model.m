@@ -86,6 +86,10 @@ Motor0 = patch(X+0.1,Y-0.1,Z,C,'facealpha',.1,'facecolor','g');
 Motor1 = patch(X-0.1,Y+0.1,Z,C,'facealpha',.1,'facecolor','k');
 Motor2 = patch(X+0.1,Y+0.1,Z,C,'facealpha',.1,'facecolor','k');
 Motor3 = patch(X-0.1,Y-0.1,Z,C,'facealpha',.1,'facecolor','k');
+% Motor0 = patch(X-0.1,Y+0.1,Z,C,'facealpha',.1,'facecolor','g');
+% Motor1 = patch(X+0.1,Y-0.1,Z,C,'facealpha',.1,'facecolor','k');
+% Motor2 = patch(X-0.1,Y-0.1,Z,C,'facealpha',.1,'facecolor','k');
+% Motor3 = patch(X+0.1,Y+0.1,Z,C,'facealpha',.1,'facecolor','k');
 
  %Coordinates of each face in each axis (4 coordinates x 6 faces)
  erle.X_armX = get(X_arm,'xdata');
