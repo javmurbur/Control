@@ -5,7 +5,7 @@ clc;
 addpath Simulador
 
 global erle;
-% erle_variables;
+erle_variables;
 init_plot;
 plot_erle_model;
 
@@ -20,7 +20,7 @@ for time = 0:erle.Tm:erle.T_simulacion
     %% Referencias
     % Roll Señal de entrada
     if(time < erle.T_escalon_roll)
-        erle.roll_des = 0;
+%         erle.roll_des = 0;
     end
     if(time >= erle.T_escalon_roll)
         
@@ -28,11 +28,12 @@ for time = 0:erle.Tm:erle.T_simulacion
     end
     % Pitch Señal de entrada
         if(time < erle.T_escalon_pitch)
-        erle.pitch_des = 0;
+%         erle.pitch_des = 0;
     end
     if(time >= erle.T_escalon_pitch)
-        erle.roll_des = -2*erle.Deg_Rad;
-        erle.pitch_des = -2*erle.Deg_Rad;
+%         erle.roll_des = 0*erle.Deg_Rad;
+%         erle.pitch_des = 0*erle.Deg_Rad;
+        erle.X_des = 0.5;
         
     end
     % Yaw Señal de entrada
@@ -40,11 +41,12 @@ for time = 0:erle.Tm:erle.T_simulacion
         erle.yaw_des = 0;
     end
     if(time >= erle.T_escalon_yaw)
-        erle.roll_des = 0;
-        erle.pitch_des = 0;
+%         erle.roll_des = 0;
+%         erle.pitch_des = 0;
         erle.yaw_des = 0*erle.Deg_Rad;
     end
     %%  Lazo de control
+  position_control;
   attitude_control;
   rate_control;
   saturacion_actuaciones;

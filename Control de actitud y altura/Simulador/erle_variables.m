@@ -71,6 +71,34 @@ erle.w1 = 0;
 erle.w2 = 0;
 erle.w3 = 0;
 
+%% Control de posición
+erle.X_des = 0;
+erle.Y_des = 0;
+
+erle.X_TI_F = 1;
+erle.X_KP_F = 1;
+erle.X_TI = 0.4;
+erle.X_TD = 0.1;
+erle.X_KP = 34.4036;
+erle.X_KI = 86.009;
+erle.X_KD = 3.4404;
+erle.X_des_filt_1 = 0;
+erle.X_ek_1 = 0;
+erle.X_Int_ek = 0;
+erle.pitch_max = 45*erle.Deg_Rad;
+
+erle.Y_TI_F = 1;
+erle.Y_KP_F = 1;
+erle.Y_TI = 0.4;
+erle.Y_TD = 0.1;
+erle.Y_KP = 34.4036;
+erle.Y_KI = 86.009;
+erle.Y_KD = 3.4404;
+erle.Y_des_filt_1 = 0;
+erle.Y_Int_ek = 0;
+erle.Y_ek_1 = 0;
+erle.roll_max = 45*erle.Deg_Rad;
+
 %% Control de altura
 %% Control de variación de ángulo
 erle.Z_des = 0;
@@ -223,4 +251,7 @@ erle.r_plot =   [0:erle.Tm:erle.T_simulacion];
 erle.U4_plot =   [0:erle.Tm:erle.T_simulacion];
 erle.yaw_des_plot = [0:erle.Tm:erle.T_simulacion];
 erle.ryaw_plot = [0:erle.Tm:erle.T_simulacion];
+
+erle.X_plot = [0:erle.Tm:erle.T_simulacion];
+erle.Y_plot = [0:erle.Tm:erle.T_simulacion];
 

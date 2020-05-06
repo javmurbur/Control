@@ -1,0 +1,20 @@
+% %% Modelo para el control de p
+% Suponiendo que el quadrotor se encuentra estable en el aire donde U1=m*g
+G = tf([1],[1 0 0]);
+
+G_final = G;
+rltool(G_final);
+
+% C = 86.009 * ((1 + 0.2*S)^2)/S
+[TI,TD,KP,KI,KD] = calculo_PID(0.086009,2,2)
+
+
+global erle;
+erle.X_TI_F = 1;
+erle.X_KP_F = 1;
+erle.X_TI = 0.4;
+erle.X_TF = 0.1;
+erle.X_KP = 34.4036;
+erle.X_KI = 86.009;
+erle.X_KD = 3.4404;
+

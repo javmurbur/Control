@@ -9,7 +9,7 @@ function attitude_control
    % Incremento de la integral del error
     erle.Z_Int_ek = erle.Z_Int_ek + erle.Tm*Z_ek;
     % Controlador PI
-    erle.U1 = (-(erle.Z_KP*(Z_ek + (1/erle.Z_TI)*erle.Z_Int_ek + erle.Z_TD*((Z_ek-erle.Z_ek_1)/erle.Tm))));
+    erle.U1 = (-(erle.Z_KP*(Z_ek + (1/erle.Z_TI)*erle.Z_Int_ek + erle.Z_TD *((Z_ek-erle.Z_ek_1)/erle.Tm))));
     % Saturación
     erle.U1 = min(erle.U1_max,max(erle.U1_min,erle.U1));
     
@@ -19,7 +19,7 @@ function attitude_control
    %% Control del roll
    erle.roll_des_filt = (erle.roll_TI_F/(erle.roll_TI_F+erle.Tm))*erle.roll_des_filt_1 + (erle.Tm/(erle.roll_TI_F+erle.Tm))*erle.roll_des;
    % Cálculo del error
-   roll_ek = erle.roll_des_filt - erle.roll;
+   roll_ek = erle.roll_des - erle.roll;
    % Incremento de la integral del error
     erle.roll_Int_ek = erle.roll_Int_ek + erle.Tm*roll_ek;
    % Controlador PI
@@ -31,9 +31,9 @@ function attitude_control
     erle.roll_ek_1 = roll_ek;
     
     %% Control del pitch
-   erle.pitch_des_filt = (erle.pitch_TI_F/(erle.pitch_TI_F+erle.Tm))*erle.pitch_des_filt_1 + (erle.Tm/(erle.pitch_TI_F+erle.Tm))*erle.pitch_des;
+%    erle.pitch_des_filt = (erle.pitch_TI_F/(erle.pitch_TI_F+erle.Tm))*erle.pitch_des_filt_1 + (erle.Tm/(erle.pitch_TI_F+erle.Tm))*erle.pitch_des;
    % Cálculo del error
-   pitch_ek = erle.pitch_des_filt - erle.pitch;
+   pitch_ek = erle.pitch_des - erle.pitch;
    % Incremento de la integral del error
     erle.pitch_Int_ek = erle.pitch_Int_ek + erle.Tm*pitch_ek;
    % Controlador PI
