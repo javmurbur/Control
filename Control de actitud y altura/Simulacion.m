@@ -5,13 +5,15 @@ clc;
 addpath Simulador
 
 global erle;
-erle_variables;
+
 init_plot;
 plot_erle_model;
+erle_variables;
+
 
 erle.contador = 0;
 
-erle.T_simulacion = 10;% segundos
+erle.T_simulacion = 20;% segundos
 erle.T_escalon_roll = 2;%(segundios);
 erle.T_escalon_pitch = 4;%(segundios);
 erle.T_escalon_yaw = 7;%(segundios)
@@ -33,7 +35,7 @@ for time = 0:erle.Tm:erle.T_simulacion
     if(time >= erle.T_escalon_pitch)
 %         erle.roll_des = 0*erle.Deg_Rad;
 %         erle.pitch_des = 0*erle.Deg_Rad;
-        erle.X_des = 0.5;
+        erle.X_des = -0.5;
         
     end
     % Yaw Señal de entrada
@@ -66,7 +68,7 @@ for time = 0:erle.Tm:erle.T_simulacion
   erle.pitch_des_plot(erle.indice) = erle.pitch_des*erle.Rad_Deg;
   erle.yaw_des_plot(erle.indice) = erle.yaw_des*erle.Rad_Deg;
   erle.time_plot(erle.indice) = time;
-%   [erle.X_dd_BF,erle.Y_dd_BF,erle.Z_dd_BF_plot(erle.indice)] = rotateGFtoBF(erle.X_dd,erle.Y_dd,erle.Z_dd,erle.roll,erle.pitch,erle.yaw);
+  [erle.X_dd_BF,erle.Y_dd_BF,erle.Z_dd_BF_plot(erle.indice)] = rotateGFtoBF(erle.X_dd,erle.Y_dd,erle.Z_dd,erle.roll,erle.pitch,erle.yaw);
   erle.indice = erle.indice + 1;
 end
 %% Gráficas

@@ -77,11 +77,11 @@ erle.Y_des = 0;
 
 erle.X_TI_F = 1;
 erle.X_KP_F = 1;
-erle.X_TI = 0.4;
-erle.X_TD = 0.1;
-erle.X_KP = 34.4036;
-erle.X_KI = 86.009;
-erle.X_KD = 3.4404;
+erle.X_TI = 10;
+erle.X_TD = 2.5000;
+erle.X_KP = 0.3523;
+erle.X_KI = 0.0352;
+erle.X_KD = 0.8808;
 erle.X_des_filt_1 = 0;
 erle.X_ek_1 = 0;
 erle.X_Int_ek = 0;

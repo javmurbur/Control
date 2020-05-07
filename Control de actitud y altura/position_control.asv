@@ -2,6 +2,7 @@ function position_control
 
 global erle;
 
+[erle.X_BF,erle.Y_BF,erle.Z_BF] = rotateGFtoBF
  %% Control de altitud
    erle.X_des_filt = (erle.X_TI_F/(erle.X_TI_F+erle.Tm))*erle.X_des_filt_1 + (erle.Tm/(erle.X_TI_F+erle.Tm))*erle.X_des;
    % Cálculo del error
@@ -11,6 +12,7 @@ global erle;
     % Controlador PI
     erle.pitch_des = ((erle.X_KP*(X_ek + (1/erle.X_TI)*erle.X_Int_ek + erle.X_TD*((X_ek-erle.X_ek_1)/erle.Tm))));
     % Saturación
+    erle.pitch_des = -erle.pitch_des * erle.Deg_Rad;
     erle.pitch_des = min(erle.pitch_max,max(-erle.pitch_max,erle.pitch_des));
     
     erle.X_des_filt_1 = erle.X_des_filt;
