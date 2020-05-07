@@ -2,14 +2,18 @@ function position_control
 
 global erle;
 
+[erle.X_des_asd,erle.Y_des_asd,erle.Z_des_asd] = rotateGFtoBF(erle.X_des,0,0,0,0,erle.yaw);
+[erle.X_BF,erle.Y_BF,erle.Z_BF] = rotateGFtoBF(erle.X,erle.Y,erle.Z,erle.roll,erle.pitch,erle.yaw);
+[erle.X_d_BF,erle.Y_d_BF,erle.Z_d_BF] = rotateGFtoBF(erle.X_d,erle.Y_d,erle.Z_d,erle.roll,erle.pitch,erle.yaw);
+
  %% Control de altitud
-   erle.X_des_filt = (erle.X_TI_F/(erle.X_TI_F+erle.Tm))*erle.X_des_filt_1 + (erle.Tm/(erle.X_TI_F+erle.Tm))*erle.X_des;
+   erle.X_des_filt = (erle.X_TI_F/(erle.X_TI_F+erle.Tm))*erle.X_des_filt_1 + (erle.Tm/(erle.X_TI_F+erle.Tm))*erle.X_des_asd;
    % Cálculo del error
-   X_ek = erle.X_des_filt - erle.X;
+   X_ek = erle.X_des_filt - erle.X_BF;
    % Incremento de la integral del error
     erle.X_Int_ek = erle.X_Int_ek + erle.Tm*X_ek;
     % Controlador PI
-    erle.pitch_des = ((erle.X_KP*(X_ek + (1/erle.X_TI)*erle.X_Int_ek + erle.X_TD*((X_ek-erle.X_ek_1)/erle.Tm))));
+    erle.pitch_des = ((erle.X_KP*(X_ek + (1/erle.X_TI)*erle.X_Int_ek + erle.X_TD*(erle.X_d_BF))));
     % Saturación
     erle.pitch_des = -erle.pitch_des * erle.Deg_Rad;
     erle.pitch_des = min(erle.pitch_max,max(-erle.pitch_max,erle.pitch_des));
