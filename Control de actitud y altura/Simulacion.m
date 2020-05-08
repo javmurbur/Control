@@ -13,7 +13,7 @@ erle_variables;
 
 erle.contador = 0;
 
-erle.T_simulacion = 20;% segundos
+erle.T_simulacion = 15;% segundos
 erle.T_escalon_roll = 2;%(segundios);
 erle.T_escalon_pitch = 4;%(segundios);
 erle.T_escalon_yaw = 7;%(segundios)
@@ -34,8 +34,9 @@ for time = 0:erle.Tm:erle.T_simulacion
     end
     if(time >= erle.T_escalon_pitch)
 %         erle.roll_des = 0*erle.Deg_Rad;
-%         erle.pitch_des = 0*erle.Deg_Rad;
-        erle.X_des = -0.5;
+%         erle.pitch_des = 5*erle.Deg_Rad;
+        erle.X_des = 2;
+        erle.Y_des = 2;
         
     end
     % Yaw Señal de entrada
@@ -49,6 +50,7 @@ for time = 0:erle.Tm:erle.T_simulacion
     end
     %%  Lazo de control
   position_control;
+  yaw_correccion;
   attitude_control;
   rate_control;
   saturacion_actuaciones;
@@ -64,8 +66,6 @@ for time = 0:erle.Tm:erle.T_simulacion
   
   %% Variables estáticas
   erle.Z_des_plot(erle.indice) = erle.Z_des;
-  erle.roll_des_plot(erle.indice) = erle.roll_des*erle.Rad_Deg;
-  erle.pitch_des_plot(erle.indice) = erle.pitch_des*erle.Rad_Deg;
   erle.yaw_des_plot(erle.indice) = erle.yaw_des*erle.Rad_Deg;
   erle.time_plot(erle.indice) = time;
   [erle.X_dd_BF,erle.Y_dd_BF,erle.Z_dd_BF_plot(erle.indice)] = rotateGFtoBF(erle.X_dd,erle.Y_dd,erle.Z_dd,erle.roll,erle.pitch,erle.yaw);

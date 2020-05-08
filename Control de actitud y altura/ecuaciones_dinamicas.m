@@ -2,21 +2,21 @@ function ecuaciones_dinamicas
 
 global erle;
 
-    erle.X_dd = (-(cos(erle.roll)*cos(erle.yaw)*sin(erle.pitch) + sin(erle.roll)*sin(erle.yaw))*erle.U1 - 0.15*erle.X_d)/erle.m; 
+    erle.X_dd = (-(cos(erle.roll)*cos(erle.yaw)*sin(erle.pitch) + sin(erle.roll)*sin(erle.yaw))*erle.U1- 0.15*erle.X_d)/erle.m; 
     erle.Y_dd = (-(cos(erle.roll)*sin(erle.yaw)*sin(erle.pitch) - sin(erle.roll)*cos(erle.yaw))*erle.U1 - 0.15*erle.Y_d)/erle.m;
     erle.Z_dd = (-(cos(erle.roll)*cos(erle.pitch))*erle.U1 - 0.3*erle.Z_d)/erle.m + erle.g;
 
 erle.p_d = ((erle.Iyy - erle.Izz)*erle.q*erle.r - erle.Jr*erle.q*(erle.w0+erle.w1-erle.w2-erle.w3) + erle.U2)/erle.Ixx;
-erle.q_d = ((erle.Izz - erle.Ixx)*erle.p*erle.r + erle.Jr*erle.p*(erle.w0+erle.w1-+erle.w2-erle.w3) + erle.U3)/erle.Iyy;
+erle.q_d = ((erle.Izz - erle.Ixx)*erle.p*erle.r + erle.Jr*erle.p*(erle.w0+erle.w1-erle.w2-erle.w3) + erle.U3)/erle.Iyy;
 erle.r_d = ((erle.Ixx - erle.Iyy)*erle.p*erle.q + erle.U4)/erle.Izz;
 %      Cálculo de p,q y r
     erle.p = erle.p_d * erle.Tm + erle.p;
     erle.q = erle.q_d * erle.Tm + erle.q;
     erle.r = erle.r_d * erle.Tm + erle.r;
 
-%     roll_d = erle.p + sin(erle.roll)*tan(erle.pitch)*erle.q + cos(erle.roll)*tan(erle.pitch)*erle.r;
-%     pitch_d = cos(erle.roll)*erle.q - sin(erle.roll)*erle.r;
-%     yaw_d = sin(erle.roll)/cos(erle.pitch) * erle.q + cos(erle.roll)/cos(erle.pitch) * erle.r;
+    roll_d = erle.p + sin(erle.roll)*tan(erle.pitch)*erle.q + cos(erle.roll)*tan(erle.pitch)*erle.r;
+    pitch_d = cos(erle.roll)*erle.q - sin(erle.roll)*erle.r;
+    yaw_d = sin(erle.roll)/cos(erle.pitch) * erle.q + cos(erle.roll)/cos(erle.pitch) * erle.r;
 %     
 %
 
@@ -33,9 +33,9 @@ erle.X_d = erle.X_dd * erle.Tm + erle.X_d;
 erle.X = erle.X_d * erle.Tm + erle.X;
 
 % Cálculo de los ángulos
-erle.roll = erle.p *erle.Tm + erle.roll;
-erle.pitch = erle.q * erle.Tm + erle.pitch;
-erle.yaw = erle.r * erle.Tm + erle.yaw;
+erle.roll = roll_d *erle.Tm + erle.roll;
+erle.pitch = pitch_d * erle.Tm + erle.pitch;
+erle.yaw = yaw_d * erle.Tm + erle.yaw;
 
     %% Variables para graficar
     erle.roll_plot(erle.indice) = erle.roll*erle.Rad_Deg;

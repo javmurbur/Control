@@ -17,9 +17,9 @@ function attitude_control
     erle.Z_ek_1 = Z_ek;
     
    %% Control del roll
-   erle.roll_des_filt = (erle.roll_TI_F/(erle.roll_TI_F+erle.Tm))*erle.roll_des_filt_1 + (erle.Tm/(erle.roll_TI_F+erle.Tm))*erle.roll_des;
+%    erle.roll_des_filt = (erle.roll_TI_F/(erle.roll_TI_F+erle.Tm))*erle.roll_des_filt_1 + (erle.Tm/(erle.roll_TI_F+erle.Tm))*erle.roll_des;
    % Cálculo del error
-   roll_ek = erle.roll_des - erle.roll;
+   roll_ek = erle.roll_des_yaw - erle.roll;
    % Incremento de la integral del error
     erle.roll_Int_ek = erle.roll_Int_ek + erle.Tm*roll_ek;
    % Controlador PI
@@ -33,7 +33,7 @@ function attitude_control
     %% Control del pitch
 %    erle.pitch_des_filt = (erle.pitch_TI_F/(erle.pitch_TI_F+erle.Tm))*erle.pitch_des_filt_1 + (erle.Tm/(erle.pitch_TI_F+erle.Tm))*erle.pitch_des;
    % Cálculo del error
-   pitch_ek = erle.pitch_des - erle.pitch;
+   pitch_ek = erle.pitch_des_yaw - erle.pitch;
    % Incremento de la integral del error
     erle.pitch_Int_ek = erle.pitch_Int_ek + erle.Tm*pitch_ek;
    % Controlador PI

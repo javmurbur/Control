@@ -74,7 +74,7 @@ erle.w3 = 0;
 %% Control de posición
 erle.X_des = 0;
 erle.Y_des = 0;
-
+erle.X_int = 0;
 erle.X_TI_F = 1;
 erle.X_KP_F = 1;
 erle.X_TI = 10;
