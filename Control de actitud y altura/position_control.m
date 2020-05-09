@@ -20,7 +20,7 @@ global erle;
     erle.pitch_des = ((0.1271*(X_ek + erle.X_Int_ek/7.5000 + 1.6667*((X_ek - erle.X_ek_1)/erle.Tm))));
     
 % Saturación
-    erle.pitch_des = -erle.pitch_des;
+    erle.pitch_des = +erle.pitch_des;
     erle.pitch_des = min(erle.pitch_max,max(-erle.pitch_max,erle.pitch_des));
     
     erle.X_des_filt_1 = erle.X_des_filt;
@@ -40,7 +40,7 @@ global erle;
     erle.roll_des = ((0.1271*(Y_ek + erle.Y_Int_ek/7.5000 + 1.6667*((Y_ek - erle.Y_ek_1)/erle.Tm))));
     
 % Saturación
-    erle.roll_des = erle.roll_des;
+    erle.roll_des = -erle.roll_des;
     erle.roll_des = min(erle.roll_des,max(-erle.roll_des,erle.roll_des));
     
     erle.Y_des_filt_1 = erle.Y_des_filt;
