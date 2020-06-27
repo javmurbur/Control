@@ -5,7 +5,6 @@ pitch = erle.pitch;
 yaw = erle.yaw;
 t = .02;
 %% Dibujar brazos del quadrotor
-
 [erle.Xtemp,erle.Ytemp,erle.Ztemp] = rotateBFtoGF(erle.X_armX,erle.X_armY,erle.X_armZ,roll,pitch,yaw);
 set(erle.X_arm,'xdata',erle.Xtemp+erle.X,'ydata',+(erle.Ytemp+erle.Y),'zdata',-(-erle.Ztemp-erle.Z));
 
@@ -13,7 +12,6 @@ set(erle.X_arm,'xdata',erle.Xtemp+erle.X,'ydata',+(erle.Ytemp+erle.Y),'zdata',-(
 set(erle.Y_arm,'xdata',erle.Xtemp+erle.X,'ydata',+(erle.Ytemp+erle.Y),'zdata',-(-erle.Ztemp-erle.Z));
 
 %% Dibujar los motores
-
 [erle.Xtemp,erle.Ytemp,erle.Ztemp] = rotateBFtoGF(erle.Motor0X,erle.Motor0Y,erle.Motor0Z,roll,pitch,yaw);
 set(erle.Motor0,'xdata',erle.Xtemp+erle.X,'ydata',+(erle.Ytemp+erle.Y),'zdata',-(-erle.Ztemp-erle.Z));
 

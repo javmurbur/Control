@@ -72,8 +72,8 @@ end
 %% Gráficas
 figure;
 subplot(2,1,1);
-plot(time_plot,yk_plot,time_plot,uk_plot);xlabel('tiempo(s)');ylabel('r(rad/s)');
+plot(time_plot,yk_plot,time_plot,uk_plot);xlabel('tiempo(s)');ylabel('r(rad/s)');legend('referencia','salida');axis([0 5 0 1.5])
 subplot(2,1,2);
-plot(time_plot,Uk_plot);legend('Señal de control');
+plot(time_plot,Uk_plot);legend('Señal de control');ylabel('U4(Kg*m/s^2)');
 figure;
 plot(time_plot,yaw_plot);title('Yaw(Deg)');

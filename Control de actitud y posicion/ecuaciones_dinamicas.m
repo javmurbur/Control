@@ -4,7 +4,7 @@ global erle;
 
     erle.X_dd = (+(cos(erle.roll)*cos(erle.yaw)*sin(erle.pitch) + sin(erle.roll)*sin(erle.yaw))*erle.U1- 0.15*erle.X_d)/erle.m; 
     erle.Y_dd = (+(cos(erle.roll)*sin(erle.yaw)*sin(erle.pitch) - sin(erle.roll)*cos(erle.yaw))*erle.U1 - 0.15*erle.Y_d)/erle.m;
-    erle.Z_dd = (+(cos(erle.roll)*cos(erle.pitch))*erle.U1 - 0.3*erle.Z_d)/erle.m - erle.g;
+    erle.Z_dd = (+(cos(erle.roll)*cos(erle.pitch))*erle.U1)/erle.m - erle.g;
 
 erle.p_d = ((erle.Iyy - erle.Izz)*erle.q*erle.r - erle.Jr*erle.q*(-erle.w0-erle.w1+erle.w2+erle.w3) + erle.U2)/erle.Ixx;
 erle.q_d = ((erle.Izz - erle.Ixx)*erle.p*erle.r + erle.Jr*erle.p*(-erle.w0-erle.w1+erle.w2+erle.w3) + erle.U3)/erle.Iyy;

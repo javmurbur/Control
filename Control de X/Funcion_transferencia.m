@@ -27,4 +27,4 @@ C_pitch = tf(172.18*[0.2 1],[1 0])
 % tiempo subida = 0.54(segundos)
 
 Gx = ((G_pitch * C_pitch)/(1 + G_pitch * C_pitch))*9.81*I*I
-rltool(Gx);
+% rltool(Gx);

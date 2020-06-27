@@ -72,8 +72,8 @@ end
 %% Gráficas
 figure;
 subplot(2,1,1);
-plot(time_plot,yk_plot*(180/pi),time_plot,uk_plot*(180/pi));xlabel('tiempo(s)');ylabel('q(rad/s)');
+plot(time_plot,yk_plot,time_plot,uk_plot);xlabel('t(s)');ylabel('q(rad/s)');legend('referencia','salida');axis([0 5 0 1.5])
 subplot(2,1,2);
-plot(time_plot,Uk_plot);legend('Señal de control');
+plot(time_plot,Uk_plot);legend('Señal de control');xlabel('t(s)');ylabel('U3(Kg*m/s^2)');
 figure;
 plot(time_plot,roll_plot);title('Pitch(Deg)');

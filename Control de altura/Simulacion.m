@@ -11,7 +11,7 @@ for time = 0:erle.Tm:erle.T_simulacion
         erle.Z_des = 0;
     end
     if(time >= erle.T_escalon)
-        erle.Z_des = -1;
+        erle.Z_des = 1;
     end
     
   altitud_control;

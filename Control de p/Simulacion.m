@@ -27,7 +27,10 @@ Fz = c2d(F,Tm);
     yk_d = 0;% derivada de la salida
     Int_ek = 0;% integral del error
     roll = 0;
-    U_max = sqrt(2)*erle.l*erle.Kt*(838)^2;
+    l = 0.141;
+    Kt = 8.5486e-6;
+    w_max = 838; % (rad/s)
+    U_max = sqrt(2)*l*Kt*(w_max)^2;
 % Variables para graficar
     time_plot = [0:Tm:T_simulacion];
     uk_plot = [0:Tm:T_simulacion];
@@ -43,7 +46,7 @@ for time = 0:Tm:T_simulacion
         uk = 0;
     end
     if(time >= T_escalon)
-        uk = 100*(pi/180);
+        uk = 1;
     end
    % Filtrado de la entrada
     uk_filtrada = (TI/(TI+Tm))*uk_1 + (Tm/(TI+Tm))*uk;
@@ -73,8 +76,8 @@ end
 %% Gráficas
 figure;
 subplot(2,1,1);
-plot(time_plot,yk_plot,time_plot,uk_plot);xlabel('tiempo(s)');ylabel('p(rad/s)');
+plot(time_plot,yk_plot,time_plot,uk_plot);xlabel('t(s)');ylabel('p(rad/s)');legend('referencia','salida');
 subplot(2,1,2);
-plot(time_plot,Uk_plot);legend('Señal de control');
+plot(time_plot,Uk_plot);legend('Señal de control');xlabel('t(s)');ylabel('U2(Kg*m/s^2)');
 figure;
 plot(time_plot,roll_plot);title('Roll(Deg)');

@@ -35,8 +35,8 @@ for time = 0:erle.Tm:erle.T_simulacion
     if(time >= erle.T_escalon_pitch)
 %         erle.roll_des = 0*erle.Deg_Rad;
 %         erle.pitch_des = 5*erle.Deg_Rad;
-        erle.X_des = 2;
-        erle.Y_des = 1;
+        erle.X_des = 0;
+        erle.Y_des = 0;
         
     end
     % Yaw Señal de entrada
