@@ -9,7 +9,7 @@ function attitude_control
    % Incremento de la integral del error
     erle.Z_Int_ek = erle.Z_Int_ek + erle.Tm*Z_ek;
     % Controlador PI
-    erle.U1 = ((erle.Z_KP*(Z_ek + (1/erle.Z_TI)*erle.Z_Int_ek + erle.Z_TD *((Z_ek-erle.Z_ek_1)/erle.Tm)))) - erle.m*erle.g;
+    erle.U1 = ((erle.Z_KP*(Z_ek + (1/erle.Z_TI)*erle.Z_Int_ek + erle.Z_TD *((Z_ek-erle.Z_ek_1)/erle.Tm)))) + erle.m*erle.g;
     % Saturación
     erle.U1 = min(erle.U1_max,max(erle.U1_min,erle.U1));
     

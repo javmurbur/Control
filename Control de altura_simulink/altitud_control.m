@@ -11,7 +11,7 @@ function out = altitud_control(in)
    % Incremento de la integral del error
     erle.Z_Int_ek = erle.Z_Int_ek + erle.Tm*Z_ek;
     % Controlador PI
-    U1 = (erle.Z_KP*(Z_ek + (1/erle.Z_TI)*erle.Z_Int_ek + erle.Z_TD*((Z_ek-erle.Z_ek_1)/erle.Tm)));
+    U1 = (erle.Z_KP*(Z_ek + (1/erle.Z_TI)*erle.Z_Int_ek + erle.Z_TD*((Z_ek-erle.Z_ek_1)/erle.Tm))) + erle.m*erle.g;
     % Saturación
     U1 = min(erle.U1_max,max(erle.U1_min,U1));
     
